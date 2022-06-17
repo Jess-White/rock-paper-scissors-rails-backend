@@ -1,4 +1,4 @@
-class PlayersController < ApplicationController
+class Api::PlayersController < ApplicationController
     def index
       @players = Player
         .order(:player_name)

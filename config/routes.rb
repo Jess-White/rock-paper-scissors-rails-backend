@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :players
+  namespace :api do
+    resources :players
+  end
 end
 
 #https://guides.rubyonrails.org/routing.html
