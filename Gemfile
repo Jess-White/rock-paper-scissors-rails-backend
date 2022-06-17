@@ -41,4 +41,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'http'
 gem 'rack-cors'
 gem 'jb'
- gem 'rspec-rails'
+
+#rspec testing 
+gem 'rspec-rails'
+gem 'guard-rspec', require: false
+gem 'shoulda-matchers', '~> 4.0'
