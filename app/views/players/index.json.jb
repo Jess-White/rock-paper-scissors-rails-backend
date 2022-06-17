@@ -1,0 +1,3 @@
+@players.map do |player|
+  render partial: "player.json.jb", locals: {player: player}
+end 

@@ -1,0 +1,7 @@
+{
+  id: player.id,
+  player_name: player.player_name,
+  wins: player.wins
+  created_at: player.created_at,
+  updated_at: player.updated_at,
+}
