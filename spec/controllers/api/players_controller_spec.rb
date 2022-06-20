@@ -23,18 +23,18 @@ before(:example) {
       expect(response).to have_http_status(200)
       expect(JSON.parse(response.body)).to match([
         a_hash_including(
-          "id" => kind_of(Integer),
           "created_at" => kind_of(String),
+          "id" => kind_of(Integer),
+          "player_name" => @eleanor.player_name,
           "updated_at" => kind_of(String),
-          "player_name" => @jason.player_name,
-          "wins" => @jason.wins,
+          "wins" => @eleanor.wins,
         ),
         a_hash_including(
-          "id" => kind_of(Integer),
           "created_at" => kind_of(String),
+          "id" => kind_of(Integer),
+          "player_name" => @jason.player_name,
           "updated_at" => kind_of(String),
-          "player_name" => @eleanor.player_name,
-          "wins" => @eleanor.wins,
+          "wins" => @jason.wins,
         ),
       ])
     end
@@ -60,10 +60,10 @@ before(:example) {
       expect(JSON.parse(response.body).keys).to contain_exactly(*player_fields)
       expect(JSON.parse(response.body)).to match(
         a_hash_including(
-          "id" => kind_of(Integer),
           "created_at" => kind_of(String),
-          "updated_at" => kind_of(String),
+          "id" => kind_of(Integer),
           "player_name" => @jason.player_name,
+          "updated_at" => kind_of(String),
           "wins" => @jason.wins,
         ),
       )
@@ -74,14 +74,14 @@ before(:example) {
   describe "POST /players" do
     it "renders 422 when given invalid params" do
       post :create, params: {
-        player_name: "abe"
+        player_name: ""
       }
 
       expect(response).to have_http_status(422)
       expect(JSON.parse(response.body)).to match(
         a_hash_including(
           "errors" => [
-            "Player name is too short (minimum is 5 characters)",
+            "Player name can't be blank",
           ],
         ),
       )
@@ -117,6 +117,7 @@ before(:example) {
       {
         id: player.id,
         player_name: "chidi_anagonye",
+        wins: 2,
       }
     }
 
@@ -133,8 +134,10 @@ before(:example) {
       expect(JSON.parse(response.body).keys).to contain_exactly(*player_fields)
       expect(JSON.parse(response.body)).to match(
         a_hash_including(
+          "created_at" => kind_of(String),
           "id" => player.id,
           "player_name" => update_params[:player_name],
+          "updated_at" => kind_of(String),
           "wins" => update_params[:wins],
         )
       )
@@ -158,10 +161,10 @@ before(:example) {
       expect(response).to have_http_status(200)
       expect(JSON.parse(response.body)).to match(
         a_hash_including(
-          "id" => player.id,
           "created_at" => player.created_at.iso8601(3),
-          "updated_at" => player.updated_at.iso8601(3),
+          "id" => player.id,
           "player_name" => player.player_name,
+          "updated_at" => player.updated_at.iso8601(3),
           "wins" => player.wins,
         ),
       )
