@@ -19,12 +19,16 @@ Frontend Repo:
 https://github.com/Jess-White/rock-paper-scissors-react-frontend
 
 The frontend is configured to run on http://localhost:3001
+
 (To double-check or change, check the scripts in the package.json file: scripts: "start": "PORT=3001 react-scripts start")
+
 The backend is configured to run on http://localhost:3000 (default) and accept requests from localhost:3001
+
 (To double-check or change, check cors.rb: origins 'localhost:3001')
 
 Routes:
 This app uses resources to configure routes. 
+
 You can learn more about resources here:
 https://guides.rubyonrails.org/routing.html
 
@@ -46,14 +50,12 @@ DELETE	/photos/:id	photos#destroy
 
 This app also includes a seeds file with 5 players so you can get started.
 
-## Developing
+## Installation
 
 You will need the following installed:
 * Ruby 2.6.5
 * Rails 6.0.5
 * PostgreSQL 10
-
-## Installation
 
 Run the following commands:
 
@@ -70,24 +72,34 @@ $ rails s
 
 ## Testing
 
-* How to run the test suite:
 This app includes rspec out of the box. 
+To run the test suite:
+
+```bash
 # Runs the entire test suite
 $ rspec
 # Runs the tests for a given file
 $ rspec [path to file]
 # Runs a particular test
 $ rspec [path to file:line number]
+```
 
 This app also includes guard-rspec.
+
 You can read more about guard-rspec here:
 https://github.com/guard/guard-rspec
+
 I used this tutorial for reference:
 https://www.lewisyoul.co.uk/posts/automate-your-rspec-test-suite-with-guard
-# Generate guardfile with default spec configurations:
-# (This should be done already, but just in case you're having problems after bundle install:)
+
+Generate guardfile with default spec configurations:
+(This should be done already, but just in case you're having problems after bundle install:)
+
+```bash
+# initialize guard
 $ bundle exec guard init rspec
 # Starts guard, which will automatically watch and run the tests for any file *or* test file you update/save:
 $ bundle exec guard
 # You should see this in the terminal:
-# 16:19:58 - INFO - Guard::RSpec is running
+$ 16:19:58 - INFO - Guard::RSpec is running
+```
