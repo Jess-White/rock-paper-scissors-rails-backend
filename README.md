@@ -5,48 +5,23 @@
 ## Overview
 
 This is the rails backend for a simple Rock Paper Scissors app. 
+
 I used these docs for reference:
+
 https://guides.rubyonrails.org/getting_started.html
 
 Backend Repo: 
+
 https://github.com/Jess-White/rock-paper-scissors-rails-backend
+
 Frontend Repo:
+
 https://github.com/Jess-White/rock-paper-scissors-react-frontend
 
 The frontend is configured to run on http://localhost:3001
 (To double-check or change, check the scripts in the package.json file: scripts: "start": "PORT=3001 react-scripts start")
 The backend is configured to run on http://localhost:3000 (default) and accept requests from localhost:3001
 (To double-check or change, check cors.rb: origins 'localhost:3001')
-
-It includes a Player model, controller, and views - 
-
-Table:
-Player: 
-    player_name (string)
-    wins (integer)
-
-Controller:
-player_controller.rb
-    index #players
-    show #players/:id
-    create #players
-    update #players/:id
-    delete #players/:id
-
-Model:
-player.rb - validates presence of player_name
-
-Views:
-_player.json.jb - partial json file that exposes data to the frontend
-show.json.jb - renders partial for one player
-index.json.jb - maps through all players and renders partial (via show) for each
-
-Note on views: You may be more familiar with serializers like this:
-https://medium.com/@maxfpowell/a-quick-intro-to-rails-serializers-b390ced1fce7
-
-Views are rendered more or less the same way:
-players_controller.rb:
-render "show.json.jb"
 
 Routes:
 This app uses resources to configure routes. 
@@ -59,10 +34,14 @@ resources :players
 
 Which creates the following routes:
 
-GET	/photos	photos#index	
+GET	/photos	photos#index
+
 POST	/photos	photos#create	
+
 GET	/photos/:id	photos#show	
+
 PATCH/PUT	/photos/:id	photos#update
+
 DELETE	/photos/:id	photos#destroy
 
 This app also includes a seeds file with 5 players so you can get started.
