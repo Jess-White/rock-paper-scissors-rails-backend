@@ -22,8 +22,8 @@ class Api::PlayersController < ApplicationController
   
     def update
       @player = Player.find_by!(id: params[:id])
-      @player.player_name = params[:player_name]
-      @player.wins = params[:wins]
+      @player.player_name = params[:player_name] || @player.player_name
+      @player.wins = params[:wins] || @player.wins
       @player.save!
   
       render "show.json.jb"
